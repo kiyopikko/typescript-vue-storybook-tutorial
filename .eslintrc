@@ -4,5 +4,9 @@
     "plugin:vue/essential",
     "@vue/prettier",
     "@vue/typescript"
-  ]
+  ],
+  "env": {
+    "node": true
+  },
+  "rules": {}
 }

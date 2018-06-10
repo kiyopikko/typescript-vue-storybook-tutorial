@@ -1,14 +1,12 @@
 const merge = require("webpack-merge");
 
-const genStorybookDefaultConfig = require("@storybook/vue/dist/server/config/defaults/webpack.config.js");
+const genStorybookDefaultConfig = require("@storybook/core/dist/server/config/defaults/webpack.config.js").createDefaultWebpackConfig;
+const wrapInitialConfig = require("@storybook/vue/dist/server/wrapInitialConfig").default;
 
 const vueConfig = require("@vue/cli-service/webpack.config.js");
 
 module.exports = (storybookBaseConfig, configType) => {
-  const storybookConfig = genStorybookDefaultConfig(
-    storybookBaseConfig,
-    configType
-  );
+  const storybookConfig = wrapInitialConfig(genStorybookDefaultConfig(storybookBaseConfig,configType));
 
   return {
     ...vueConfig, // use vue's webpack configuration by default
